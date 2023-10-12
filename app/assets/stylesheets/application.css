@@ -13,3 +13,42 @@
  *= require_tree .
  *= require_self
  */
+table.schedule {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin-top: 2rem;
+}
+table.schedule td {
+  border: 1px solid black;
+  text-align: center;
+  padding: 0 10px;
+}
+table.schedule td.busy {
+  background-color: #cde6f2;
+  overflow: hidden;
+  padding: 0.5rem;
+}
+table.schedule td.busy a {
+  display: block;
+  margin: -10em;
+  padding: 10em;
+  color: #0e1b4d;
+}
+table.schedule td.break {
+  background-color: #ffb;
+}
+table.schedule td.day {
+  padding: 2rem;
+  font-weight: bold;
+  font-size: 2rem;
+}
+table.schedule tr:hover {
+  background-color: #cfc;
+}
+table.schedule ul {
+  list-style: none;
+}
+
+.footer {
+  height: 2em;
+}

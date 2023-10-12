@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   root "homepage#index"
   get 'info', to: 'information#index'
   get 'schedule', to: 'schedule#index'
+  get 'timing', to: 'timing#index'
 end
