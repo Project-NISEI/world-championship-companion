@@ -52,3 +52,16 @@ table.schedule ul {
 .footer {
   height: 2em;
 }
+
+.tiktok {
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.tiktok--title {
+  font-weight: bold;
+}
+
+.tiktok.paused .tiktok--title::after {
+  content: " (paused)"
+}

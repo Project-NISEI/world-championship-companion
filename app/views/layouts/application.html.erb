@@ -12,7 +12,55 @@
 
   <body>
     <%= render 'layouts/navbar' %>
+
+    <% @counter = Counter.first %>
+    <div class='tiktok <%= @counter.active ? "active" : "paused" %>'>
+      <p class='tiktok--title'><%= @counter.title %></p>
+
+      <p class='tiktok--time-left'>00:00:00</p>
+    </div>
+
     <%= yield %>
     <%= render 'layouts/footer' %>
+
+    <script type='module'>
+      let counter = {};
+
+      await reloadCounter();
+      setInterval(reloadCounter, 5000);
+      setInterval(updateCounterView, 1000);
+
+      async function reloadCounter() {
+        const response = await fetch("/counter");
+        const payload = await response.json();
+
+        counter = payload;
+      }
+
+      async function updateCounterView() {
+        const tiktok = document.querySelector('.tiktok');
+
+        if (counter.active) {
+          tiktok.classList.remove('paused');
+          tiktok.classList.add('active');
+        } else {
+          tiktok.classList.add('paused');
+          tiktok.classList.remove('active');
+        }
+
+        const time_in_seconds_elapsed = Math.round((Date.now() - Date.parse(counter.time_started)) / 1000);
+        const time_in_seconds_left = counter.time_left - time_in_seconds_elapsed;
+
+        const h_left = Math.floor(time_in_seconds_left/3600);
+        const m_left = Math.floor(time_in_seconds_left/60)%60;
+        const s_left = time_in_seconds_left%60;
+
+        const h_left_formatted = `${h_left}`.padStart(2, '0');
+        const m_left_formatted = `${m_left}`.padStart(2, '0');
+        const s_left_formatted = `${s_left}`.padStart(2, '0');
+
+        tiktok.querySelector('.tiktok--time-left').innerHTML = `${h_left_formatted}:${m_left_formatted}:${s_left_formatted}`;
+      }
+    </script>
   </body>
 </html>

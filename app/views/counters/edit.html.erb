@@ -1,0 +1,9 @@
+<%= form_with model: @counter do |f| %>
+
+  <p>Title: <%= f.text_field :title %></p>
+  <p>Active: <%= f.check_box :active %></p>
+  <p>Time started: <%= f.datetime_field :time_started %></p>
+  <p>Time left (seconds): <%= f.number_field :time_left %></p>
+
+  <%= f.submit %>
+<% end %>
