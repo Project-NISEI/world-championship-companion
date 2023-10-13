@@ -1,6 +1,6 @@
 class CountersController < ApplicationController
   def show
-    @counter = Counter.first
+    @counter = Counter.first_or_create!
 
     render json: @counter.as_json(only: [:title, :active, :time_left, :time_started])
   end
