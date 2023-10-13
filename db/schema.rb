@@ -13,7 +13,7 @@
 ActiveRecord::Schema[7.0].define(version: 2023_10_12_221550) do
   create_table "counters", force: :cascade do |t|
     t.text "title"
-    t.boolean "active", default: true
+    t.boolean "active", default: false
     t.datetime "time_left"
     t.datetime "time_started"
     t.datetime "created_at", null: false
