@@ -1,0 +1,6 @@
+<% @counter = Counter.first %>
+<div class='tiktok <%= @counter.active ? "active" : "paused" %>'>
+    <p class='tiktok--title'><%= @counter.title %></p>
+
+    <p class='tiktok--time-left'>00:00:00</p>
+</div>
